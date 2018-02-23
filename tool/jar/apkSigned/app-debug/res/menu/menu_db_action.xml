@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu>
+    <item n1:icon="@android:drawable/ic_menu_add" n1:id="@id/spAct_action_add" n1:orderInCategory="100" n1:title="@string/app_name" n2:showAsAction="ifRoom|withText"
+      xmlns:n1="http://schemas.android.com/apk/res/android" xmlns:n2="http://schemas.android.com/apk/res-auto" />
+    <item n3:icon="@android:drawable/ic_menu_search" n3:id="@id/spAct_action_search" n3:orderInCategory="100" n3:title="@string/app_name" n4:showAsAction="ifRoom|withText"
+      xmlns:n3="http://schemas.android.com/apk/res/android" xmlns:n4="http://schemas.android.com/apk/res-auto" />
+</menu>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.afollestad.materialdialogs.internal.MDRootLayout n1:orientation="vertical" n1:layout_width="fill_parent" n1:layout_height="wrap_content" n2:md_reduce_padding_no_title_no_buttons="false"
+  xmlns:n1="http://schemas.android.com/apk/res/android" xmlns:n2="http://schemas.android.com/apk/res-auto">
+    <include layout="@layout/md_stub_titleframe" />
+    <LinearLayout n1:orientation="vertical" n1:layout_width="fill_parent" n1:layout_height="wrap_content">
+        <ScrollView n1:id="@id/md_contentScrollView" n1:paddingTop="@dimen/md_content_padding_top" n1:paddingBottom="@dimen/md_content_padding_bottom" n1:clipToPadding="false" n1:layout_width="fill_parent" n1:layout_height="wrap_content" n1:layout_weight="1.0">
+            <TextView n1:textSize="@dimen/md_content_textsize" n1:id="@id/md_content" n1:paddingLeft="@dimen/md_dialog_frame_margin" n1:paddingRight="@dimen/md_dialog_frame_margin" n1:layout_width="fill_parent" n1:layout_height="wrap_content" n1:layout_marginBottom="@dimen/md_content_padding_top" />
+        </ScrollView>
+        <CheckBox n1:gravity="start|center" n1:layout_gravity="start" n1:id="@id/md_promptCheckbox" n1:focusable="true" n1:layout_width="fill_parent" n1:layout_height="wrap_content" n1:layout_marginLeft="@dimen/md_notitle_vertical_padding" n1:layout_marginRight="@dimen/md_notitle_vertical_padding" />
+    </LinearLayout>
+    <include layout="@layout/md_stub_actionbuttons" />
+</com.afollestad.materialdialogs.internal.MDRootLayout>

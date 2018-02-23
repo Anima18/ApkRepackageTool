@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout n1:gravity="center_vertical" n1:orientation="horizontal" n1:id="@id/md_titleFrame" n1:paddingLeft="@dimen/md_dialog_frame_margin" n1:paddingTop="@dimen/md_dialog_frame_margin" n1:paddingRight="@dimen/md_dialog_frame_margin" n1:paddingBottom="@dimen/md_title_frame_margin_bottom" n1:layout_width="fill_parent" n1:layout_height="wrap_content"
+  xmlns:n1="http://schemas.android.com/apk/res/android">
+    <ImageView n1:id="@id/md_icon" n1:layout_width="wrap_content" n1:layout_height="wrap_content" n1:layout_marginRight="@dimen/md_icon_margin" n1:scaleType="fitXY" n1:layout_marginEnd="@dimen/md_icon_margin" />
+    <TextView n1:textSize="@dimen/md_title_textsize" n1:id="@id/md_title" n1:layout_width="fill_parent" n1:layout_height="wrap_content" />
+</LinearLayout>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout n1:layout_width="fill_parent" n1:layout_height="fill_parent"
+  xmlns:n1="http://schemas.android.com/apk/res/android">
+    <Button n1:id="@id/button6" n1:layout_width="0.0dip" n1:layout_height="wrap_content" n1:layout_marginTop="16.0dip" n1:text="选择一张图片" n1:onClick="selectImage" n1:layout_marginStart="16.0dip" n1:layout_marginEnd="16.0dip" n2:layout_constraintEnd_toEndOf="parent" n2:layout_constraintStart_toStartOf="parent" n2:layout_constraintTop_toTopOf="parent" xmlns:n2="http://schemas.android.com/apk/res-auto" />
+    <ImageView n1:id="@id/imageView4" n1:layout_width="wrap_content" n1:layout_height="wrap_content" n1:layout_marginTop="100.0dip" n3:layout_constraintBottom_toBottomOf="parent" n3:layout_constraintLeft_toLeftOf="parent" n3:layout_constraintRight_toRightOf="parent" n3:layout_constraintTop_toTopOf="parent" n3:srcCompat="@mipmap/ic_launcher" xmlns:n3="http://schemas.android.com/apk/res-auto" />
+</android.support.constraint.ConstraintLayout>

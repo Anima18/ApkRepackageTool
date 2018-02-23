@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="com.anima.hello" android:versionCode="1" android:versionName="1.0">  
+  <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>  
+  <uses-permission android:name="android.permission.INTERNET"/>  
+  <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS"/>  
+  <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>  
+  <application android:allowBackup="true" android:debuggable="true" android:icon="@mipmap/ic_launcher" android:label="@string/app_name" android:roundIcon="@mipmap/ic_launcher_round" android:supportsRtl="true" android:testOnly="true" android:theme="@style/AppTheme"> 
+    <activity android:name="com.example.chris.androidtraining.MainActivity"> 
+      <intent-filter> 
+        <action android:name="android.intent.action.MAIN"/>  
+        <category android:name="android.intent.category.LAUNCHER"/> 
+      </intent-filter> 
+    </activity>  
+    <activity android:label="FirstActivity" android:name="com.example.chris.androidtraining.start_android.FirstActivity" android:parentActivityName="com.example.chris.androidtraining.MainActivity"/>  
+    <activity android:label="SecondActivity" android:name="com.example.chris.androidtraining.start_android.SecondActivity" android:parentActivityName="com.example.chris.androidtraining.start_android.FirstActivity"/>  
+    <activity android:label="DeviceAdaptManagerActivity" android:name="com.example.chris.androidtraining.support_different_devices.DeviceAdaptManagerActivity"/>  
+    <activity android:label="Supporting Different Languages" android:name="com.example.chris.androidtraining.support_different_devices.DifferentPlatformVersionsActivity"/>  
+    <activity android:label="Supporting Different Languages" android:name="com.example.chris.androidtraining.support_different_devices.DifferentLanguagesActivity"/>  
+    <activity android:label="Supporting Different Screen" android:name="com.example.chris.androidtraining.support_different_devices.DifferentScreenActivity"/>  
+    <activity android:label="Dynamic UI" android:name="com.example.chris.androidtraining.dynamic_ui_with_fragments.DynamicUIFragmentActivity"/>  
+    <activity android:label="Save Data" android:name="com.example.chris.androidtraining.save_data.SaveDataManagerActivity"/>  
+    <activity android:label="Save Preference" android:name="com.example.chris.androidtraining.save_data.SavePreferenceActivity"/>  
+    <activity android:label="Save Files Data" android:name="com.example.chris.androidtraining.save_data.file.SaveFileDataManagerActivity"/>  
+    <activity android:label="Save Internal Files" android:name="com.example.chris.androidtraining.save_data.file.SaveInternalStorageActivity"/>  
+    <activity android:label="Save External Public Files" android:name="com.example.chris.androidtraining.save_data.file.SaveExternalPublicStorageActivity"/>  
+    <activity android:label="Save External Private Files" android:name="com.example.chris.androidtraining.save_data.file.SaveExternalPrivateStorageActivity"/>  
+    <activity android:label="Save DB data" android:name="com.example.chris.androidtraining.save_data.db.DBActionActivity"/>  
+    <activity android:label="Send Intents" android:name="com.example.chris.androidtraining.intents.IntentManagerActivity"/>  
+    <activity android:label="Sending the User to Another App" android:name="com.example.chris.androidtraining.intents.IntentToAnotherAppActivity"/>  
+    <activity android:label="Getting a Result from an Activity" android:name="com.example.chris.androidtraining.intents.IntentResultActivity"/>  
+    <activity android:label="Allowing Other Apps to Start Your Activity" android:name="com.example.chris.androidtraining.intents.IntentStartOtherApp"/>  
+    <activity android:label="Sharing content" android:name="com.example.chris.androidtraining.sharing.SharingManagerActivity"/>  
+    <activity android:label="Sharing Simple Data" android:name="com.example.chris.androidtraining.sharing.sharing_simple_data.SharingSimpleDataManagerActivity"/>  
+    <activity android:label="Sharing text" android:name="com.example.chris.androidtraining.sharing.sharing_simple_data.SharingTextActivtity"/>  
+    <activity android:label="Sharing image" android:name="com.example.chris.androidtraining.sharing.sharing_simple_data.SharingImageActivtity"/>  
+    <activity android:label="File Provider" android:name="com.example.chris.androidtraining.sharing.sharing_file_data.FileProviderSelectActivity"> 
+      <intent-filter> 
+        <action android:name="android.intent.action.PICK"/>  
+        <category android:name="android.intent.category.DEFAULT"/>  
+        <category android:name="android.intent.category.OPENABLE"/>  
+        <data android:mimeType="text/plain"/>  
+        <data android:mimeType="image/*"/> 
+      </intent-filter> 
+    </activity>  
+    <activity android:label="Sharing File" android:name="com.example.chris.androidtraining.sharing.sharing_file_data.SharingFileActivity"/>  
+    <provider android:authorities="com.example.chris.androidtraining.fileprovider" android:exported="false" android:grantUriPermissions="true" android:name="android.support.v4.content.FileProvider"> 
+      <meta-data android:name="android.support.FILE_PROVIDER_PATHS" android:resource="@xml/filepaths"/> 
+    </provider>  
+    <meta-data android:name="android.arch.lifecycle.VERSION" android:value="27.0.0-SNAPSHOT"/> 
+  </application> 
+</manifest>

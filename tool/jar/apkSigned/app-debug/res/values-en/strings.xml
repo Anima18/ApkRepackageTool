@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">AndroidTraining</string>
+    <string name="current_version">Current system version:%1$d</string>
+    <string name="hello_android">hello，android!</string>
+</resources>

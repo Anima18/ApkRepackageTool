@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout n1:orientation="horizontal" n1:layout_width="fill_parent" n1:layout_height="fill_parent"
+  xmlns:n1="http://schemas.android.com/apk/res/android">
+    <fragment n1:name="com.example.chris.androidtraining.dynamic_ui_with_fragments.HeadlinesFragment" n1:id="@id/headlines_fragment" n1:layout_width="0.0dip" n1:layout_height="fill_parent" n1:layout_weight="1.0" />
+    <fragment n1:name="com.example.chris.androidtraining.dynamic_ui_with_fragments.ArticleFragment" n1:id="@id/article_fragment" n1:layout_width="0.0dip" n1:layout_height="fill_parent" n1:layout_weight="2.0" />
+</LinearLayout>
