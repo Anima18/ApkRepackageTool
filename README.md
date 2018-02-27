@@ -4,4 +4,4 @@ ApkRepackageTool是一个对APK进行二次打包的工具，可以修改应用�
 ## 可运行程序
 运行ApkRepackageTool/tool/bin/run.bat  
 
-![image](https://raw.githubusercontent.com/Anima18/ApkRepackageTool/master/image/repackage.jpg)
+![image](https://github.com/Anima18/ApkRepackageTool/blob/master/image/repackage.png?raw=true)
