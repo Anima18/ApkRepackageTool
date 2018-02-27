@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout n1:gravity="center_vertical" n1:orientation="horizontal" n1:paddingLeft="16.0dip" n1:layout_width="fill_parent" n1:layout_height="72.0dip"
-  xmlns:n1="http://schemas.android.com/apk/res/android">
-    <ImageView n1:layout_width="56.0dip" n1:layout_height="56.0dip" n1:contentDescription="filePath" />
-    <TextView n1:textSize="16.0sp" n1:textColor="#ff212121" n1:gravity="center_vertical" n1:id="@id/mainList_title_tv" n1:paddingRight="16.0dip" n1:layout_width="wrap_content" n1:layout_height="fill_parent" n1:layout_marginLeft="16.0dip" n1:layout_weight="1.0" n1:contentDescription="fileName" />
-</LinearLayout>

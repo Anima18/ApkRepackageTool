@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout n1:layout_width="fill_parent" n1:layout_height="fill_parent"
-  xmlns:n1="http://schemas.android.com/apk/res/android">
-    <Button n1:id="@id/button4" n1:layout_width="352.0dip" n1:layout_height="wrap_content" n1:text="send result intent" n1:onClick="sendResultIntent" />
-    <TextView n1:id="@id/textView2" n1:layout_width="wrap_content" n1:layout_height="wrap_content" n1:layout_marginTop="16.0dip" n1:layout_marginStart="16.0dip" n2:layout_constraintStart_toStartOf="parent" n2:layout_constraintTop_toBottomOf="@id/button4" xmlns:n2="http://schemas.android.com/apk/res-auto" />
-</android.support.constraint.ConstraintLayout>

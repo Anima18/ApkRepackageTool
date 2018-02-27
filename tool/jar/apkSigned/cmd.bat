@@ -1,2 +1,0 @@
-cd /d C:/Users/jianjianhong.UT/Desktop/ApkRepackageTool/jar/apkSigned/
-java -jar C:/Users/jianjianhong.UT/Desktop/ApkRepackageTool/jar/apkSigned/signapk.jar C:/Users/jianjianhong.UT/Desktop/ApkRepackageTool/jar/apkSigned/cert.x509.pem C:/Users/jianjianhong.UT/Desktop/ApkRepackageTool/jar/apkSigned/private.pk8 C:/Users/jianjianhong.UT/Desktop/ApkRepackageTool/jar/apkSigned/shell/dist/shell.apk C:/Users/jianjianhong.UT/Desktop/ApkRepackageTool/jar/apkSigned/shell_new.apk

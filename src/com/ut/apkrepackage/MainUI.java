@@ -509,7 +509,8 @@ public class MainUI extends javax.swing.JFrame {
             String xxxhIcon = xxxhIconPath.replace("\\", "/");
             
             APKInfo apkInfo = new APKInfo(apkPath, appName, appPackage, versionCode, versionName, resPath, mIcon, hIcon, xhIcon, xxhIcon, xxxhIcon);
-            APKSignatureService.signature(apkInfo);
+            APKSignatureService service = new APKSignatureService(logArea);
+            service.signature(apkInfo);
          
         }).start();
     }//GEN-LAST:event_signedBtActionPerformed

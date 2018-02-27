@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout n1:orientation="horizontal" n1:background="?selectableItemBackground" n1:paddingLeft="@dimen/md_dialog_frame_margin" n1:paddingRight="@dimen/md_dialog_frame_margin" n1:focusable="true" n1:descendantFocusability="blocksDescendants" n1:layout_width="fill_parent" n1:layout_height="wrap_content" n1:minHeight="@dimen/md_listitem_height" n1:paddingStart="@dimen/md_dialog_frame_margin" n1:paddingEnd="@dimen/md_dialog_frame_margin"
-  xmlns:n1="http://schemas.android.com/apk/res/android">
-    <android.support.v7.widget.AppCompatCheckBox n1:gravity="center_vertical" n1:id="@id/md_control" n1:background="@null" n1:focusable="false" n1:clickable="false" n1:layout_width="wrap_content" n1:layout_height="fill_parent" />
-    <TextView n1:textSize="@dimen/md_listitem_textsize" n1:gravity="center_vertical" n1:id="@id/md_title" n1:paddingLeft="@dimen/md_listitem_control_margin" n1:paddingTop="@dimen/md_listitem_vertical_margin_choice" n1:paddingBottom="@dimen/md_listitem_vertical_margin_choice" n1:layout_width="wrap_content" n1:layout_height="fill_parent" n1:minHeight="@dimen/md_listitem_height" n1:paddingStart="@dimen/md_listitem_control_margin" />
-</LinearLayout>

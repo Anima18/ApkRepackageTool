@@ -22,7 +22,6 @@ public class ApkSignedUtil {
 	}
 	
 	public static void updateAndroidMainifest(String filePath, String appPackage, String versionCode, String versionName) throws DocumentException, IOException {		
-            System.out.println(filePath);
             Document doc = XMLUtil.getDocument(filePath);  
             Element root = doc.getRootElement();          
             Attribute packageAttr = root.attribute("package");

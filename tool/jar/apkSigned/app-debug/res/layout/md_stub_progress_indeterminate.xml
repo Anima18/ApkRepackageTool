@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout n1:gravity="start|center" n1:orientation="horizontal" n1:paddingLeft="@dimen/md_dialog_frame_margin" n1:paddingTop="@dimen/md_content_padding_top" n1:paddingRight="@dimen/md_dialog_frame_margin" n1:paddingBottom="@dimen/md_content_padding_top" n1:layout_width="fill_parent" n1:layout_height="wrap_content"
-  xmlns:n1="http://schemas.android.com/apk/res/android">
-    <ProgressBar n1:id="@android:id/progress" n1:layout_width="wrap_content" n1:layout_height="wrap_content" n1:indeterminate="true" style="@style/Widget.MaterialProgressBar.ProgressBar" />
-    <TextView n1:textSize="@dimen/md_content_textsize" n1:gravity="start" n1:id="@id/md_content" n1:paddingLeft="16.0dip" n1:layout_width="fill_parent" n1:layout_height="wrap_content" n1:fontFamily="sans-serif" n1:textAlignment="viewStart" n1:paddingStart="16.0dip" />
-</LinearLayout>

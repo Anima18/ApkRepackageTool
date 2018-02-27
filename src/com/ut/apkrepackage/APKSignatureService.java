@@ -12,6 +12,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
+import javax.swing.JTextArea;
 import org.apache.commons.io.FileUtils;
 import org.dom4j.DocumentException;
 
@@ -21,65 +22,22 @@ import org.dom4j.DocumentException;
  */
 public class APKSignatureService {
     
-    public static String signature(APKInfo apkInfo) {
+    private JTextArea logArea;
+    
+    public APKSignatureService() {}
+    
+    public APKSignatureService(JTextArea logArea) {
+        this.logArea = logArea;
+    }
+    
+    public String signature(APKInfo apkInfo) {
         //当前的工作目录
         String path = System.getProperty("user.dir").replace("\\", "/");
         //apk的签名目录
         String apktoolPath = path + "/apkSigned/apktool.jar";
         
-        printMessage("apktoolPath:"+apktoolPath);
-
-        if(StringUtil.isEmpty(apkInfo.getApkPath())) {
-            throw new IllegalArgumentException("APK Path不能为空。");
-        }
-        if(!new File(apkInfo.getApkPath()).exists()) {
-            throw new IllegalArgumentException("APK文件不存在。");
-        }
-
-        if(StringUtil.isEmpty(apkInfo.getVersionCode())) {
-            throw new IllegalArgumentException("版本号不能为空。");
-        }
-
-        if(StringUtil.isEmpty(apkInfo.getVersionName())) {
-            throw new IllegalArgumentException("版本名称不能为空。");
-        }
-
-        if(StringUtil.isEmpty(apkInfo.getAppPackage())) {
-            throw new IllegalArgumentException("应用包名不能为空。");
-        }
-
-        if(StringUtil.isEmpty(apkInfo.getAppName())) {
-            throw new IllegalArgumentException("应用名称不能为空。");
-        }
-
-        if(StringUtil.isEmpty(apkInfo.getmIcon())) {
-            throw new IllegalArgumentException("mIcon不能为空。");
-        }
-        if(!new File(apkInfo.getmIcon()).exists()) {
-            throw new IllegalArgumentException("mIcon不存在。");
-        }
-
-        if(StringUtil.isEmpty(apkInfo.gethIcon())) {
-            throw new IllegalArgumentException("hIcon不能为空。");
-        }
-        if(!new File(apkInfo.gethIcon()).exists()) {
-            throw new IllegalArgumentException("hIcon不存在。");
-        }
-
-        if(StringUtil.isEmpty(apkInfo.getXxhIcon())) {
-            throw new IllegalArgumentException("xxhIcon不能为空。");
-        }
-        if(!new File(apkInfo.getXxhIcon()).exists()) {
-            throw new IllegalArgumentException("xxhIcon不存在。");
-        }
-
-        if(StringUtil.isEmpty(apkInfo.getXxxhIcon())) {
-            throw new IllegalArgumentException("xxxhIcon不能为空。");
-        }
-        if(!new File(apkInfo.getXxxhIcon()).exists()) {
-            throw new IllegalArgumentException("xxxhIcon不存在。");
-        }
-        
+        //校验apkInfo合法性
+        verifyApkInfo(apkInfo);
         
         /**
         * 编译和签名的根目录
@@ -98,8 +56,12 @@ public class APKSignatureService {
             printMessage("正在解包...");
             //解包命令
             String openJarCode = "java -jar " + apktoolPath + " d -f -s " +apkPath;
-            printMessage("openJarCode:"+openJarCode);
             Process p = run.exec(openJarCode, null, new File(toolDirPath));
+            p.waitFor();
+            
+            //支持Android 7
+            String forceCode = "java -jar " + apktoolPath + " empty-framework-dir --force";
+            p = run.exec(forceCode, null, new File(toolDirPath));
             p.waitFor();
             printMessage("解包成功。");
 
@@ -112,11 +74,21 @@ public class APKSignatureService {
             printMessage("修改应用名称成功");
 
             printMessage("正在修改应用图标...");
-            Files.copy(Paths.get(apkInfo.gethIcon()), Paths.get(toolDirPath + apkName + "/res/mipmap-hdpi-v4/ic_launcher.png"), StandardCopyOption.REPLACE_EXISTING);
-            Files.copy(Paths.get(apkInfo.getmIcon()), Paths.get(toolDirPath + apkName + "/res/mipmap-mdpi-v4/ic_launcher.png"), StandardCopyOption.REPLACE_EXISTING);
-            Files.copy(Paths.get(apkInfo.getXhIcon()), Paths.get(toolDirPath + apkName + "/res/mipmap-xhdpi-v4/ic_launcher.png"), StandardCopyOption.REPLACE_EXISTING);
-            Files.copy(Paths.get(apkInfo.getXxhIcon()), Paths.get(toolDirPath + apkName + "/res/mipmap-xxhdpi-v4/ic_launcher.png"), StandardCopyOption.REPLACE_EXISTING);
-            Files.copy(Paths.get(apkInfo.getXxxhIcon()), Paths.get(toolDirPath + apkName + "/res/mipmap-xxxhdpi-v4/ic_launcher.png"), StandardCopyOption.REPLACE_EXISTING);
+            String iconDirPath = toolDirPath + apkName + "/res/mipmap-hdpi/";
+            File iconDir = new File(iconDirPath);
+            if(iconDir.exists()) {
+                Files.copy(Paths.get(apkInfo.gethIcon()), Paths.get(toolDirPath + apkName + "/res/mipmap-hdpi/ic_launcher.png"), StandardCopyOption.REPLACE_EXISTING);
+                Files.copy(Paths.get(apkInfo.getmIcon()), Paths.get(toolDirPath + apkName + "/res/mipmap-mdpi/ic_launcher.png"), StandardCopyOption.REPLACE_EXISTING);
+                Files.copy(Paths.get(apkInfo.getXhIcon()), Paths.get(toolDirPath + apkName + "/res/mipmap-xhdpi/ic_launcher.png"), StandardCopyOption.REPLACE_EXISTING);
+                Files.copy(Paths.get(apkInfo.getXxhIcon()), Paths.get(toolDirPath + apkName + "/res/mipmap-xxhdpi/ic_launcher.png"), StandardCopyOption.REPLACE_EXISTING);
+                Files.copy(Paths.get(apkInfo.getXxxhIcon()), Paths.get(toolDirPath + apkName + "/res/mipmap-xxxhdpi/ic_launcher.png"), StandardCopyOption.REPLACE_EXISTING);
+            }else {
+                Files.copy(Paths.get(apkInfo.gethIcon()), Paths.get(toolDirPath + apkName + "/res/mipmap-hdpi-v4/ic_launcher.png"), StandardCopyOption.REPLACE_EXISTING);
+                Files.copy(Paths.get(apkInfo.getmIcon()), Paths.get(toolDirPath + apkName + "/res/mipmap-mdpi-v4/ic_launcher.png"), StandardCopyOption.REPLACE_EXISTING);
+                Files.copy(Paths.get(apkInfo.getXhIcon()), Paths.get(toolDirPath + apkName + "/res/mipmap-xhdpi-v4/ic_launcher.png"), StandardCopyOption.REPLACE_EXISTING);
+                Files.copy(Paths.get(apkInfo.getXxhIcon()), Paths.get(toolDirPath + apkName + "/res/mipmap-xxhdpi-v4/ic_launcher.png"), StandardCopyOption.REPLACE_EXISTING);
+                Files.copy(Paths.get(apkInfo.getXxxhIcon()), Paths.get(toolDirPath + apkName + "/res/mipmap-xxxhdpi-v4/ic_launcher.png"), StandardCopyOption.REPLACE_EXISTING);  
+            }
             printMessage("修改应用图标成功");
 
             if(StringUtil.isNotEmpty(apkInfo.getResPath())) {
@@ -137,6 +109,7 @@ public class APKSignatureService {
             String packJarCode = "java -jar " + apktoolPath + " b " +apkName;
             p = run.exec(packJarCode, null, new File(toolDirPath));
             p.waitFor();
+            
             printMessage("重新打包成功。");
 
             printMessage("正在签名...");
@@ -156,7 +129,74 @@ public class APKSignatureService {
         }
     }
     
-    public static void printMessage(String message) {
-        System.out.println(message);
+    private void verifyApkInfo(APKInfo apkInfo) {
+        if(StringUtil.isEmpty(apkInfo.getApkPath())) {
+            printErrorMessage("APK Path不能为空。");
+        }
+        if(!new File(apkInfo.getApkPath()).exists()) {
+            printErrorMessage("APK文件不存在。");
+        }
+
+        if(StringUtil.isEmpty(apkInfo.getVersionCode())) {
+            printErrorMessage("版本号不能为空。");
+        }
+
+        if(StringUtil.isEmpty(apkInfo.getVersionName())) {
+            printErrorMessage("版本名称不能为空。");
+        }
+
+        if(StringUtil.isEmpty(apkInfo.getAppPackage())) {
+            printErrorMessage("应用包名不能为空。");
+        }
+
+        if(StringUtil.isEmpty(apkInfo.getAppName())) {
+            printErrorMessage("应用名称不能为空。");
+        }
+
+        if(StringUtil.isEmpty(apkInfo.getmIcon())) {
+            printErrorMessage("mIcon不能为空。");
+        }
+        if(!new File(apkInfo.getmIcon()).exists()) {
+            printErrorMessage("mIcon不存在。");
+        }
+
+        if(StringUtil.isEmpty(apkInfo.gethIcon())) {
+            printErrorMessage("hIcon不能为空。");
+        }
+        if(!new File(apkInfo.gethIcon()).exists()) {
+            printErrorMessage("hIcon不存在。");
+        }
+
+        if(StringUtil.isEmpty(apkInfo.getXxhIcon())) {
+            printErrorMessage("xxhIcon不能为空。");
+        }
+        if(!new File(apkInfo.getXxhIcon()).exists()) {
+            printErrorMessage("xxhIcon不存在。");
+        }
+
+        if(StringUtil.isEmpty(apkInfo.getXxxhIcon())) {
+            printErrorMessage("xxxhIcon不能为空。");
+        }
+        if(!new File(apkInfo.getXxxhIcon()).exists()) {
+            printErrorMessage("xxxhIcon不存在。");
+        }
+    }
+    
+    public void printMessage(String message) {
+        if(logArea != null) {
+            logArea.append(message);
+            logArea.append("\n");
+        }else {
+            System.out.println(message);
+        }       
+    }
+    
+    public void printErrorMessage(String message) {
+        if(logArea != null) {
+            logArea.append(message);
+            logArea.append("\n");
+        }else {
+            throw new IllegalArgumentException(message);
+        }       
     }
 }
